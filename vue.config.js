@@ -1,6 +1,6 @@
 "use strict";
 
-const { name, version } = require("./package.json");
+const { name: moduleName, version: moduleVersion } = require("./package.json");
 
 module.exports = {
 	devServer: {
@@ -12,7 +12,7 @@ module.exports = {
 	},
 	chainWebpack: (config) => {
 		config.plugin("html").tap((args) => {
-			args[0].title = `${ name } ${version}`;
+			args[0].title = `${ moduleName.split("/")[1] } ${ moduleVersion }`;
 			return args;
 		});
 	},

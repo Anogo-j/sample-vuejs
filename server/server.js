@@ -12,6 +12,7 @@ const fs = require("fs");
 const { LoadConfiguration } = require("./services/load-configuration.js");
 const { Logger } = require("./services/logger.js");
 const { StoreManager } = require("./services/store-manager.js");
+const { Ejs } = require("./services/ejs.js");
 
 const { publicRouterFactory } = require("./routers/public.js");
 const { authentificationRouterFactory } = require("./routers/authentification.js");
@@ -33,18 +34,17 @@ class Server {
 	constructor() {
 		this.logger = null;
 		this.configuration = null;
+		this.ejs = null;
 		this.app = express();
 		this.server = null;
 	}
 
 	async initialize(configurationFile) {
-		const context = await Server.initializeContext({ configurationFile });
+		const context = await this.initializeContext({ configurationFile });
 
 		this.logger = context.logger;
 		this.configuration = context.configLoader.getValue("server");
-
-		this.app.set("views", path.join(__dirname, "ejsPages"));
-		this.app.set("view engine", "ejs");
+		this.ejs = context.ejs;
 
 		this.app.use(compression());
 		this.app.use((request, response, next) =>
@@ -59,16 +59,21 @@ class Server {
 			this.errorMiddleware(error, request, response, next));
 	}
 
-	static async initializeContext({ configurationFile }) {
+	async initializeContext({ configurationFile }) {
 		const loadConfiguration = new LoadConfiguration(configurationFile);
 		const configLoader = await loadConfiguration.load();
 
 		const logger = new Logger(configLoader.getValue("logs")).getLogger();
 		logger.log("info", "Configuration", configLoader.config);
 
+		const ejs = new Ejs({
+			app: this.app, data: { title: `${ moduleName.split("/")[1] } ${ moduleVersion }` },
+		});
+
 		const context = {
 			configLoader,
 			logger,
+			ejs,
 		};
 
 		const storeManager = new StoreManager({ path: path.join(__dirname, "stores"), context });
@@ -81,13 +86,13 @@ class Server {
 		if (request.hostname === this.configuration.url_server) {
 			return next();
 		}
-		response.status(403).render("403", { title: `${ moduleName } ${ moduleVersion }` });
+		this.ejs.render({ response, status: 403, ejs: "403" });
 	}
 
 	// eslint-disable-next-line no-unused-vars
 	errorMiddleware(error, request, response, next) {
 		this.logger.log("error", error.stack);
-		response.status(500).render("error", { title: `${ moduleName } ${ moduleVersion }`, error });
+		this.ejs.render({ response, status: 500, ejs: "error", data: { error } });
 	}
 
 	start() {

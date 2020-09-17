@@ -3,9 +3,7 @@
 const express = require("express");
 const path = require("path");
 
-const { name: moduleName, version: moduleVersion } = require("../../package.json");
-
-function staticRouterFactory({ configLoader }) {
+function staticRouterFactory({ configLoader, ejs }) {
 
 	// eslint-disable-next-line new-cap
 	const router = express.Router();
@@ -18,8 +16,7 @@ function staticRouterFactory({ configLoader }) {
 	/* site */
 	router.use(express.static(path.join(__dirname, "../../dist")));
 
-	router.use((request, response) => response.status(404)
-		.render("404", { title: `${ moduleName } ${ moduleVersion }` }));
+	router.use((request, response) => ejs.render({ response, status: 404, ejs: "404" }));
 
 	return router;
 }
