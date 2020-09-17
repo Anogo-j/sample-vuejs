@@ -1,0 +1,14 @@
+infos:
+  type: object
+  additionalProperties: false
+  required: [ name, version ]
+  properties:
+    name:
+      description: nom de l'application
+      type: string
+    version:
+      description: version de l'application
+      type: string
+    readme:
+      description: readme de l'application en html
+      type: string

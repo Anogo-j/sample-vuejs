@@ -1,0 +1,91 @@
+name:
+  description: Nom de l'utilisateur
+  type: string
+password:
+  description: mot de passe de l'utilisateur
+  type: string
+  minLength: 4
+active:
+  description: Utilisateur actif
+  type: boolean
+  default: true
+description:
+  description: description de l'utilisateur
+  type: string
+is_admin:
+  description: l'utilisateur est-il administrateur ?
+  type: boolean
+
+user_infos:
+  type: object
+  additionalProperties: false
+  required: [ name, is_admin ]
+  properties:
+    name:
+      $ref: "#/name"
+    description:
+      $ref: "#/description"
+    is_admin:
+      $ref: "#/is_admin"
+
+user_detail:
+  type: object
+  additionalProperties: false
+  required: [ name, password, active, description, is_admin ]
+  properties:
+    name:
+      $ref: "#/name"
+    password:
+      $ref: "#/password"
+    active:
+      $ref: "#/active"
+    description:
+      $ref: "#/description"
+    is_admin:
+      $ref: "#/is_admin"
+
+user_create:
+  type: object
+  additionalProperties: false
+  required: [ name, password, description ]
+  properties:
+    name:
+      $ref: "#/name"
+    password:
+      $ref: "#/password"
+    active:
+      $ref: "#/active"
+    description:
+      $ref: "#/description"
+
+user_update:
+  type: object
+  additionalProperties: false
+  properties:
+    password:
+      $ref: "#/password"
+    active:
+      $ref: "#/active"
+    description:
+      $ref: "#/description"
+
+user_list:
+  type: object
+  additionalProperties: false
+  required: [ page, page_size, total_pages, total_users, users ]
+  properties:
+    page:
+      $ref: "../../../openapi/schemas.yml#/page"
+    page_size:
+      $ref: "../../../openapi/schemas.yml#/page_size"
+    total_pages:
+      $ref: "../../../openapi/schemas.yml#/total_pages"
+    total_users:
+      description: nombre d'utilisateur au total
+      type: integer
+      format: int32
+    users:
+      description: liste des utilisateurs
+      type: array
+      items:
+        $ref: "#/user_detail"

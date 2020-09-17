@@ -1,0 +1,64 @@
+{
+  "name": "sample-vuejs",
+  "version": "0.1.0",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "eslint --ext .js,.vue,.json --ignore-path .gitignore .",
+    "depcheck": "depcheck --ignore-path=.gitignore --ignores='core-js,@vue/*,babel-eslint,ejs' ",
+    "start": "URL_SERVER=localhost node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "compression": "^1.7.4",
+    "core-js": "^3.6.5",
+    "decamelize-keys": "^1.1.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "express-openapi-validator": "^3.17.1",
+    "fast-glob": "^3.2.4",
+    "lodash": "^4.17.20",
+    "markdown-it": "^11.0.1",
+    "require-glob": "^3.2.0",
+    "require-yml": "^2.0.0",
+    "sb-collection-file": "^1.0.1",
+    "sb-configuration-loader": "^1.0.1",
+    "serve-favicon": "^2.5.0",
+    "swagger-parser": "^10.0.2",
+    "swagger-ui-express": "^4.1.4",
+    "traverse": "^0.6.6",
+    "vue": "^2.6.11",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.6",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/cli-service": "^4.5.6",
+    "babel-eslint": "^10.1.0",
+    "depcheck": "^1.2.0",
+    "eslint": "^7.9.0",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-material": "^1.0.0-beta-15"
+  },
+  "engines": {
+    "node": ">=10.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergebesson/sample-vuejs.git"
+  },
+  "author": "Serge BESSON <serge@famille-besson.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/sergebesson/sample-vuejs/issues"
+  },
+  "homepage": "https://github.com/sergebesson/sample-vuejs#readme",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
