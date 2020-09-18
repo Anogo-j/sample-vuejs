@@ -1,6 +1,6 @@
 {
   "name": "@sbesson/sample-vuejs",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -50,7 +50,7 @@
     "type": "git",
     "url": "git+https://github.com/sergebesson/sample-vuejs.git"
   },
-  "publishConfig" :{
+  "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
