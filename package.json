@@ -9,6 +9,7 @@
     "start": "URL_SERVER=localhost node index.js"
   },
   "dependencies": {
+    "@sbesson/json-db": "^1.0.3",
     "axios": "^0.20.0",
     "compression": "^1.7.4",
     "core-js": "^3.6.5",
@@ -22,7 +23,6 @@
     "markdown-it": "^11.0.1",
     "require-glob": "^3.2.0",
     "require-yml": "^2.0.0",
-    "sb-collection-file": "^1.0.1",
     "sb-configuration-loader": "^1.0.1",
     "serve-favicon": "^2.5.0",
     "swagger-parser": "^10.0.2",
