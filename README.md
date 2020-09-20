@@ -1,21 +1,7 @@
 # @sbesson/sample-vuejs
 
-Ce projet est un exemple de développement nodejs/vuejs délivrant une api utilisé par le front.
-
-dependances principales utilisées :
-
-* express
-* express-openapi-validator
-* swagger-parser
-* swagger-ui-express
-* vue
-* vue-material
-
-## sommaire
-
 <!-- TOC -->
 
-- [sommaire](#sommaire)
 - [Execution du projet](#execution-du-projet)
   - [En développement](#en-développement)
   - [En production](#en-production)
@@ -26,7 +12,7 @@ dependances principales utilisées :
     - [server.js](#serverjs)
     - [Les stores](#les-stores)
     - [Les routers](#les-routers)
-    - [l'API](#lapi)
+    - [l'api](#lapi)
       - [l'arborescence](#larborescence)
       - [api.js](#apijs)
       - [module API](#module-api)
@@ -36,6 +22,17 @@ dependances principales utilisées :
     - [Les stores](#les-stores-1)
 
 <!-- /TOC -->
+
+Ce projet est un exemple de développement nodejs/vuejs délivrant une api utilisé par le front.
+
+dependances principales utilisées :
+
+* express
+* express-openapi-validator
+* swagger-parser
+* swagger-ui-express
+* vue
+* vue-material
 
 ## Execution du projet
 
@@ -72,7 +69,7 @@ Et lancer le serveur avec une configuration de production
 * **data** : Contient les données de base (fichier de conf, certificat ssl de test, etc ...). n'est pas utilisé en production
 * **server** : contient le code source du serveur (backend)
 * **src** : contient le code source de l'interface utilisateur (frontend)
-* **public** : Pages html de vuecli
+* **public** : Pages html de vue-cli
 
 l'`index.js` ne fait que lancer le serveur.
 
@@ -95,17 +92,17 @@ Pour cela voici les actions qu'il effectue :
 
 1. Initialisation du context
     * Chargement de la configuration
-    * Initialisation le logger
-    * Initialise le service ejs (pour les template des pages html)
+    * Initialisation du logger
+    * Initialisation du service ejs (pour les template des pages html)
     * Initialisation des stores
-1. Initialisation de middleware ou router
-    * compression des réponses
+1. Initialisation des middlewares et des routers
+    * Compression des réponses
     * Validation de l'url d'appel
-    * gestion des pages publiques
-    * authentification
-    * gestion de l'API
-    * gestion des pages statiques
-    * gestion des erreurs
+    * Gestion des pages publiques
+    * Authentification
+    * Gestion de l'API
+    * Gestion des pages statiques
+    * Gestion des erreurs
 1. Lancement du serveur
 1. Gestion de l'arrêt du serveur sur SIGINT
 
@@ -132,7 +129,7 @@ Il y a 4 routers :
 * **public** : router express gérant les pages publiques (ne réclamant pas d'authentification)
 * **static** : router express délivrant les pages statiques du site (il faut être authentifié pour recevoir ces pages)
 
-#### l'API
+#### l'api
 
 ##### l'arborescence
 
@@ -150,7 +147,7 @@ Pour cela il met en place les routes suivantes pour le chemin `/api` :
 
 * **\<all>** : contrôle api via openapi (utilisation de `express-openapi-validator`, `swagger-parser`)
 * **/** : Accès à la documentation openapi (utilisation de `swagger-ui-express`)
-* **/\<modules>** : Mise en place du router des modules avec le control des droits admin
+* **/\<modules>** : Mise en place du router du module \<module> avec le control des droits admin
 * **Gestion d'erreur** : Mise en place des middleware d'erreur (erreur openapi et générale)
 
 ##### module API

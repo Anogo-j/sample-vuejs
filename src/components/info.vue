@@ -1,11 +1,15 @@
 
 <template>
 	<div class="md-elevation-10 info">
-		<div>nom de l'application : <span>{{ infoStore.infos.name }}</span></div>
-		<div>version : <span>{{ infoStore.infos.version }}</span></div>
-		<div>debug : <span>{{ configurationStore.getValue("debug") }}</span></div>
+		<div class="info-app">
+			<div>nom de l'application : <span>{{ infoStore.infos.name }}</span></div>
+			<div>version : <span>{{ infoStore.infos.version }}</span></div>
+			<div>debug : <span>{{ configurationStore.getValue("debug") }}</span></div>
+		</div>
 		<hr>
-		<span v-html="infoStore.infos.readme" />
+		<div class="readme">
+			<div v-html="infoStore.infos.readme" />
+		</div>
 	</div>
 </template>
 
@@ -29,7 +33,7 @@ export default {
 .info {
 	padding: 10px;
 }
-.info span {
+.info .info-app span {
 	font-weight: bolder;
 }
 </style>
