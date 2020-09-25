@@ -171,7 +171,7 @@ On doit trouver également à la racine du module un répertoire `openapi` qui d
 
 Le context contient :
 
-* **configLoader** : object de type ConfigLoader (`sb-configuration-loader`) permettant de récupérer les options de configuration.
+* **configLoader** : object de type ConfigLoader (`@sbesson/configuration-loader`) permettant de récupérer les options de configuration.
 * **logger** : logger (`winston`)
 * **ejs** : service permettant de générer des pages html via les template ejs
 * **\<store>** : Accès à l'instance des stores.
