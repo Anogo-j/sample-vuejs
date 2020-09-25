@@ -5,7 +5,7 @@
 	"server" : {
 		"port": 8081,
 		"host": "localhost",
-		"url_server": "test.famille-besson.com",
+		"url_server": "sample-vuejs.famille-besson.com",
 		"ssl": {
 			"enable": false,
 			"certFile": "data/ssl/cert.crt",
@@ -13,7 +13,7 @@
 		}
 	},
 	"logs": {
-		"file": "data/test.log",
+		"file": "data/sample-vuejs.log",
 		"max_size": 102400,
 		"max_files": 5,
 		"level": "debug"
