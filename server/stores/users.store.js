@@ -5,24 +5,15 @@ const path = require("path");
 const { safeCompare } = require("express-basic-auth");
 const { JsonDb } = require("@sbesson/json-db");
 
-const { User } = require("./user");
+const { User } = require("./users/user");
+const { usersJsonSchema } = require("./users/user.json-schema");
 
 class UsersStore {
 	constructor({ configLoader }) {
 		const directory = configLoader.getValue("storage.databaseDirectory");
 		this.structureJsonDb = {
 			idName: "name",
-			jsonSchema: {
-				type: "object",
-				properties: {
-					name: { type: "string" },
-					password: { type: "string", minLength: 4 },
-					active: { type: "boolean", default: true },
-					description: { type: "string" },
-				},
-				additionalProperties: false,
-				required: [ "name", "password", "active" ],
-			},
+			jsonSchema: usersJsonSchema,
 			searchIndex: [ "name", "description" ],
 		};
 
