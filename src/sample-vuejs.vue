@@ -3,10 +3,27 @@
 		<loader v-if="!meStore.name" />
 		<error />
 
-		<div class="content" v-show="meStore.name">
-			<app-header :me="meStore"/>
-			<infos />
-		</div>
+		<md-app md-waterfall md-mode="fixed" v-show="meStore.name" class="md-elevation-10">
+			<md-app-toolbar class="md-primary">
+				<span class="md-title">Sample Vue.js</span>
+			</md-app-toolbar>
+
+			<md-app-drawer md-permanent="full">
+				<md-toolbar class="md-transparent" md-elevation="0">
+					Navigation
+				</md-toolbar>
+				<md-list>
+					<md-list-item>
+						<span class="md-list-item-text">Choix 1</span>
+					</md-list-item>
+				</md-list>
+			</md-app-drawer>
+
+			<md-app-content>
+				<app-header :me="meStore"/>
+				<infos />
+			</md-app-content>
+		</md-app>
 	</div>
 </template>
 
@@ -34,13 +51,17 @@ export default {
 	scrollbar-width: thin;
 }
 
-html, body, .test-app {
+html, body, .sample-vuejs {
 	height: 100%;
+	overflow: hidden;
 }
 
-.sample-vuejs .content {
-	padding: 20px;
-	height: 100%;
-	background-color: white;
+.sample-vuejs .md-drawer {
+	width: 110px;
+}
+
+.sample-vuejs .md-app {
+	margin: 20px;
+	height: calc(100% - 40px);
 }
 </style>
