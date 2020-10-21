@@ -3,9 +3,6 @@
 		<div>
 			Bonjour <span>{{ me.name }}</span>
 		</div>
-		<md-button @click="logout">
-			<md-icon>exit_to_app</md-icon><span>déconnexion</span>
-		</md-button>
 	</div>
 </template>
 
@@ -16,16 +13,6 @@ export default {
 		me: {
 			type: Object,
 			default: () => ({ name: "inconnu" }),
-		},
-	},
-	methods: {
-		logout: async function () {
-			const xhr = new window.XMLHttpRequest();
-			xhr.addEventListener("loadend", () => {
-				window.location.assign("/logout");
-			});
-			xhr.open("HEAD", window.location.href, true, "logout", "logout");
-			xhr.send(null);
 		},
 	},
 };
