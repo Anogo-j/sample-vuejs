@@ -45,7 +45,7 @@ class OpenapiService {
 
 		const modulesPath = path.join(__dirname, "../modules");
 		const openapiFiles = await fastGlob("./*/openapi/openapi.yml", { cwd: modulesPath });
-		openapiFiles.forEach((openapiFile) => {
+		openapiFiles.sort().forEach((openapiFile) => {
 			const openapiDir = path.dirname(openapiFile);
 			const openapiModule = requireYml({ targets: openapiFile, rootDir: modulesPath });
 			traverse(openapiModule).forEach(function (value) {

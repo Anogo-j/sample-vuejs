@@ -9,7 +9,7 @@ const authorizedRoutes = {
 	all: [ "/me" ],
 };
 
-function routerFactory({ usersStore }) {
+function routerFactory({ stores: { usersStore } }) {
 	// eslint-disable-next-line new-cap
 	const router = express.Router();
 

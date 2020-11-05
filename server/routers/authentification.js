@@ -3,7 +3,7 @@
 const express = require("express");
 const expressBasicAuth = require("express-basic-auth");
 
-async function authentificationRouterFactory({ usersStore }) {
+async function authentificationRouterFactory({ stores: { usersStore } }) {
 	// eslint-disable-next-line new-cap
 	const router = express.Router();
 

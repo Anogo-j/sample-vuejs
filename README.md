@@ -118,7 +118,7 @@ Cette class recevra, lors de son constructeur, le context (avec la configuration
 
 Les stores seront instanciés automatiquement par `server.js` et leur méthode `initialize()` sera exécutée.
 
-L'instance sera ensuite mis dans le context.
+L'instance sera ensuite mis dans le context dans l'attribut `stores`.
 
 #### Les routers
 
@@ -174,7 +174,7 @@ Le context contient :
 * **configLoader** : object de type ConfigLoader (`@sbesson/configuration-loader`) permettant de récupérer les options de configuration.
 * **logger** : logger (`winston`)
 * **ejs** : service permettant de générer des pages html via les template ejs
-* **\<store>** : Accès à l'instance des stores.
+* **stores** : Liste des instances des stores.
 
 ### le front `/src`
 
