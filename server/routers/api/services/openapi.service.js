@@ -87,7 +87,7 @@ class OpenapiService {
 			if (error instanceof expressOpenapiValidator.error.Forbidden ||
 				error instanceof expressOpenapiValidator.error.MethodNotAllowed ||
 				error instanceof expressOpenapiValidator.error.NotFound ||
-				error instanceof expressOpenapiValidator.error.RequestEntityToLarge ||
+				error instanceof expressOpenapiValidator.error.RequestEntityTooLarge ||
 				error instanceof expressOpenapiValidator.error.Unauthorized ||
 				error instanceof expressOpenapiValidator.error.UnsupportedMediaType ||
 				error instanceof expressOpenapiValidator.error.InternalServerError) {
