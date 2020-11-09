@@ -23,7 +23,7 @@
 
 <!-- /TOC -->
 
-Ce projet est un exemple de développement nodejs/vuejs délivrant une api utilisé par le front.
+Ce projet est un exemple de développement nodejs/vuejs délivrant une api utilisée par le front.
 
 dependances principales utilisées :
 
@@ -116,9 +116,9 @@ Exemple, pour le store `infos` le fichier source est `infos.store.js` et export 
 
 Cette class recevra, lors de son constructeur, le context (avec la configuration, le logger et le service ejs) et devra contenir une méthode `initialize()` permettant d'initialiser le store.
 
-Les stores seront instanciés automatiquement par `server.js` et leur méthode `initialize()` sera exécutée.
+Les stores seront instanciés automatiquement par `server.js` et mis dans le context dans l'attribut `stores`, puis leur méthode `initialize()` sera exécutée.
 
-L'instance sera ensuite mis dans le context dans l'attribut `stores`.
+La méthode `initialize()` reçois le context cette fois avec l'attribut `stores` renseigné et contenant une instance de tous les stores. Attention, ces stores ne sont pas encore initialisés à ce moment là.
 
 #### Les routers
 

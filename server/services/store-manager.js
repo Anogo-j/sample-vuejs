@@ -15,12 +15,14 @@ class StoreManager {
 
 	async loadInContext() {
 		const requireStores = await requireGlob(path.join(this.path, "*.store.js"));
-		await Promise.all(_.map(requireStores, async(store, storeName) => {
+		_.forEach(requireStores, (store, storeName) => {
 			this.context.stores[storeName] = new store[
 				pascalCase(storeName, { transform: pascalCaseTransformMerge })
 			](this.context);
-			return await this.context.stores[storeName].initialize();
-		}));
+		});
+		await Promise.all(
+			_.map(this.context.stores, async(store) => await store.initialize(this.context)),
+		);
 	}
 }
 
